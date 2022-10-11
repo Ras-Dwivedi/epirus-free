@@ -23,13 +23,17 @@ services:
       - epirus
 
   web:
-    image: web3labs/epirus-free-web:latest
+    image: explorer:0.0.1
     environment:
       - API_URL=/api
     depends_on:
       - api
     networks:
       - epirus
+    # command: sh -c 'cp logo.svg /app/public/static/logo.svg && cp index.tx /app/src/theming/index.ts'
+    ports:
+      - 3001:3001
+      - 3000:3000
   
   ingestion:
     image: web3labs/epirus-free-ingestion:latest
